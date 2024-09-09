@@ -1,0 +1,75 @@
+What Happens When You Type https://www.google.com and Press Enter?
+Have you ever wondered what happens under the hood when you visit a website? Whether you’re a seasoned software engineer or just beginning your journey, understanding the inner workings of this simple action is fundamental. Let’s dive into the key steps involved when you type “https://www.google.com” into your browser and press Enter.
+
+1. DNS Request: Where Does www.google.com Live?
+The first step in this process is resolving the human-readable address, “www.google.com,” into a machine-friendly IP address. This is where DNS (Domain Name System) comes into play.
+
+When you type the URL, your browser checks its DNS cache to see if it has recently resolved the domain. If not, it sends a request to a DNS resolver, usually provided by your ISP or a public service like Google DNS.
+
+Here’s a simplified breakdown of how DNS works:
+
+The browser checks its cache for the IP address.
+If not found, the operating system checks its own DNS cache.
+If still unresolved, the request goes to a DNS resolver.
+The DNS resolver queries various DNS servers, starting with the root server, moving to the Top-Level Domain (TLD) server (like .com), and finally the authoritative name server for google.com.
+The DNS resolver gets the IP address of www.google.com and returns it to your browser.
+Now the browser knows where to send the request — the server’s IP address!
+
+2. TCP/IP: Making the Connection
+With the IP address in hand, your browser establishes a connection to the web server. This is done using the TCP/IP (Transmission Control Protocol/Internet Protocol) stack.
+
+TCP (Transport Layer): TCP ensures a reliable connection between your device and the web server by splitting the request into smaller packets. These packets are sent over the internet and reassembled at the destination.
+IP (Internet Layer): IP is responsible for routing these packets across the internet. It ensures that they reach the correct destination using the IP address returned by the DNS.
+Once the packets reach the server, TCP reassembles them into the original request, completing the connection.
+
+3. Firewall: The Network’s Guardian
+At this stage, the request reaches the server’s firewall, a security system designed to monitor and control incoming and outgoing traffic. The firewall checks the validity of the request and ensures it adheres to specific security rules. If deemed safe, the request is forwarded to the appropriate destination (i.e., the web server). This step is crucial to prevent malicious requests from reaching the server.
+
+4. HTTPS/SSL: Secure Communication
+Since you’re accessing https://www.google.com, the connection is secured using HTTPS (Hypertext Transfer Protocol Secure), which ensures that the communication between your browser and the web server is encrypted.
+
+The encryption happens using SSL/TLS (Secure Sockets Layer/Transport Layer Security):
+
+Your browser sends a Hello message to the server, asking to establish a secure connection.
+The server responds by sending its SSL certificate, a digital document that contains the server’s public encryption key.
+Your browser verifies the SSL certificate to ensure that the server is who it claims to be (i.e., Google).
+Once verified, the browser and the server agree on encryption methods and keys to secure the connection.
+Now, any data exchanged between your browser and the server is encrypted, preventing eavesdropping.
+
+5. Load Balancer: Distributing the Load
+Large websites like Google use load balancers to distribute incoming traffic across multiple servers to ensure reliability, scalability, and optimal performance.
+
+When your request reaches Google’s infrastructure, the load balancer determines which server should handle the request based on several factors:
+
+Server load: Ensuring no single server is overwhelmed.
+Geolocation: Directing your request to the nearest data center for reduced latency.
+Health checks: Making sure the server is up and running before sending the request.
+By balancing traffic, load balancers improve the website’s availability and speed.
+
+6. Web Server: Serving the Content
+Once the request reaches the designated server, the web server takes over. Popular web servers like Apache, Nginx, or Google’s proprietary servers are responsible for handling requests for web pages, static content (like images, CSS, or JavaScript), and more.
+
+The web server interprets your request (e.g., "GET /"), looks for the requested resource (like the homepage), and prepares to respond.
+
+7. Application Server: The Brain Behind the Scenes
+In some cases, the request might need more complex processing beyond serving static content. This is where the application server comes in. The application server processes dynamic requests, such as fetching user-specific data or handling search queries.
+
+For example, if you were searching for “weather” on Google, the application server would receive this request and trigger a series of backend processes to fetch and format the relevant information.
+
+8. Database: Where Data Lives
+If the request requires fetching data (like user profiles or search results), the application server interacts with the database. This database could be an SQL-based system like MySQL or PostgreSQL, or a NoSQL system like MongoDB.
+
+The database processes the query and returns the requested data to the application server, which in turn formats the data and sends it back to the web server.
+
+9. Response: Rendering the Page
+Now that all the necessary data has been gathered, the web server sends the response back to your browser. The browser receives the response in the form of HTML, CSS, and JavaScript files.
+
+HTML: Provides the structure of the page.
+CSS: Styles the page, making it visually appealing.
+JavaScript: Adds interactivity, like handling button clicks or animations.
+Finally, the browser parses and renders the page using the DOM (Document Object Model), and you see Google’s search engine page in front of you, ready to use.
+
+Conclusion
+Behind the simple action of typing “https://www.google.com” and hitting Enter lies a complex web of systems working together seamlessly. From DNS resolution and secure communication to load balancing and database queries, every step ensures that you get the content you requested in a matter of milliseconds.
+
+Understanding this process not only improves your grasp of how the web works but also deepens your appreciation for the countless technologies working behind the scenes to make the internet fast, secure, and reliable.
